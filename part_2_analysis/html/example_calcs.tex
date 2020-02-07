@@ -1,0 +1,78 @@
+
+% This LaTeX was auto-generated from MATLAB code.
+% To make changes, update the MATLAB code and republish this document.
+
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{color}
+
+\sloppy
+\definecolor{lightgray}{gray}{0.5}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+    
+    
+\subsection*{Contents}
+
+\begin{itemize}
+\setlength{\itemsep}{-1ex}
+   \item Temperature Calculation
+\end{itemize}
+\begin{verbatim}
+clear all;
+close all;
+clc;
+\end{verbatim}
+
+
+\subsection*{Temperature Calculation}
+
+\begin{par}
+DESCRIPTIVE TEXT
+\end{par} \vspace{1em}
+\begin{par}
+Conversion from a Type T thermocouple voltage $V$ to a temperature T is done by applying a set of coefficients to the recorded voltage. The conversion coefficients may be seen below.
+\end{par} \vspace{1em}
+\begin{verbatim}
+T0 = 1.3500000E+02;
+V0 = 5.9588600E+00;
+p1 = 2.0325591E+01;
+p2 = 3.3013079E+00;
+p3 = 1.2638462E-01;
+p4 = -8.2883695E-04;
+q1 = 1.7595577E-01;
+q2 = 7.9740521E-03;
+q3 = 0.0;
+
+% EQUATION GOES HERE
+
+% Where $$\Delta{V} = V - v_o$$
+
+% The calculation done in code(with $V$ in millivolts is written as:
+
+V =  1.4094;
+
+delta_v = V - V0;
+
+numerator = delta_v.*( p1 + delta_v.*( p2 + delta_v.*(p3 + p4.*delta_v)));
+denominator = 1 + delta_v.*(q1 + delta_v.*(q2 + q3.*delta_v));
+T = T0 + numerator./denominator;
+
+% Now printing the result:
+
+T
+\end{verbatim}
+
+        \color{lightgray} \begin{verbatim}
+T =
+
+   35.1559
+
+\end{verbatim} \color{black}
+    
+
+
+\end{document}
+    
